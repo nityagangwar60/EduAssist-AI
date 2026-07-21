@@ -1,9 +1,18 @@
+import os
 import joblib
 
-model = joblib.load("sentiment_model.pkl")
-vectorizer = joblib.load("vectorizer.pkl")
+vectorizer = None
+model = None
 
-
+if os.path.exists("vectorizer.pkl") and os.path.exists("sentiment_model.pkl"):
+    vectorizer = joblib.load("vectorizer.pkl")
+    model = joblib.load("sentiment_model.pkl")
 def predict_sentiment(text):
-    X = vectorizer.transform([text])
-    return model.predict(X)[0]
+
+    if vectorizer is None or model is None:
+        return "Neutral"
+
+    vector = vectorizer.transform([text])
+    prediction = model.predict(vector)
+
+    return prediction[0]
