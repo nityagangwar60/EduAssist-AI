@@ -22,7 +22,7 @@ import os
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="EduAssist AI")
-app = FastAPI(title="EduAssist AI")
+
 
 app.add_middleware(
     CORSMiddleware,
