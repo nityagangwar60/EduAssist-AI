@@ -18,3 +18,8 @@ node_modules/
 
 # VS Code
 .vscode/
+# AI generated files
+ai-service/chunks.pkl
+ai-service/vector.index
+ai-service/vectorizer.pkl
+ai-service/uploads/

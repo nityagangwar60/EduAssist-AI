@@ -1,6 +1,12 @@
+import os
 from pdf_reader import extract_text
 from vector_store import create_vector_store
 
-text = extract_text("uploads/oops index.pdf")
+pdf_path = "uploads/oops index.pdf"
 
-print(create_vector_store(text))
+if os.path.exists(pdf_path):
+    text = extract_text(pdf_path)
+    create_vector_store(text)
+    print("Vector created")
+else:
+    print("No PDF found. Skipping vector creation.")
