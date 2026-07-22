@@ -23,11 +23,11 @@ Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="EduAssist AI")
 
-
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "http://localhost:5173"
+        "http://localhost:5173",
+        "https://edu-assist-ai-wine.vercel.app",
     ],
     allow_credentials=True,
     allow_methods=["*"],
