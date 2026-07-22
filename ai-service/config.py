@@ -5,7 +5,7 @@ load_dotenv()
 
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
 
-print("OPENROUTER_API_KEY =", OPENROUTER_API_KEY)
+print("API KEY =", OPENROUTER_API_KEY)
 
 MODEL = os.getenv(
     "MODEL",
