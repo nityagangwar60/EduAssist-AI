@@ -1,6 +1,5 @@
 from httpcore import request
 from sqlalchemy import text
-from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI, Depends, HTTPException
 from sqlalchemy.orm import Session
 from schemas import UserRegister, UserLogin, ChatRequest
@@ -17,8 +16,9 @@ from sentiments import predict_sentiment
 from fastapi import UploadFile, File
 import shutil
 from pdf_reader import extract_text
-
 import os
+from fastapi.middleware.cors import CORSMiddleware
+
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="EduAssist AI")
@@ -26,14 +26,13 @@ app = FastAPI(title="EduAssist AI")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "http://localhost:5173",
         "https://edu-assist-ai-wine.vercel.app",
+        "http://localhost:5173",
     ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 @app.get("/")
 def home():
     return {"message": "EduAssist AI Backend Running"}
